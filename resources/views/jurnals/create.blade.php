@@ -11,6 +11,7 @@
         <div class="mb-4">
             <label for="user_id" class="block text-gray-700">Nama:</label>
             <select name="user_id" id="user_id" class="border rounded w-full py-2 px-3 @error('user_id') border-red-500 @enderror">
+                <option value=""> -- Pilih User -- </option>
                 @foreach($users as $user)
                     @if($user->status === 'user')
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
