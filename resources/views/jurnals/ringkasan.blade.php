@@ -1,3 +1,5 @@
+@auth
+
 @extends('layouts.app')
 
 @section('content')
@@ -38,3 +40,7 @@
     @endforeach
 </div>
 @endsection
+
+@else
+{{ url('/login') }}
+@endauth

@@ -3,15 +3,17 @@
 @section('content')
 <div class="container mx-auto">
     <h1 class="text-2xl mb-10 font-bold">Detail Jurnal PKL untuk {{ $namaBulan }} {{ $tahun }}</h1>
-
+@if (auth()->user()->isAdmin())
     <form method="GET" action="{{ route('jurnals.detail', ['tahun' => $tahun, 'bulan' => $bulan]) }}" class="mb-5">
         <div class="flex items-center space-x-2">
-            <select name="user_id" class="border border-gray-300 rounded px-3 py-2">
-                <option value="">Pilih User</option>
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}" {{ $selectedUser == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                @endforeach
-            </select>
+            
+                <select name="user_id" class="border border-gray-300 rounded px-3 py-2">
+                    <option value="">Pilih User</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}" {{ $selectedUser == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                    @endforeach
+                </select>
+           
 
             <select name="tanggal" class="border border-gray-300 rounded px-3 py-2">
                 <option value="">Pilih Tanggal</option>
@@ -28,7 +30,7 @@
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Filter</button>
         </div>
     </form>
-
+ @endif
     @if($jurnals->isEmpty())
         <p>Kosong</p>
     @else

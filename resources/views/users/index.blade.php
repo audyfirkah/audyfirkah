@@ -1,5 +1,5 @@
 <!-- resources/views/users/index.blade.php -->
-
+@auth
 @extends('layouts.app')
 
 @section('content')
@@ -52,3 +52,7 @@
     </table>
 </div>
 @endsection
+
+@else
+{{ url('/login') }}
+@endauth
