@@ -211,28 +211,32 @@ class JurnalController extends Controller
         $bulanNumber = is_numeric($bulan) ? $bulan : Carbon::parse($bulan)->month;
 
         $selectedUser = request()->input('user_id');
+        $selectedDate = request()->input('tanggal');
         $users = User::where('status', 'user')->get();
 
-        if (auth()->user()->status === 'admin') {
-            $query = Jurnal::whereYear('tanggal', $tahun)
-                ->whereMonth('tanggal', $bulanNumber);
+        $query = Jurnal::whereYear('tanggal', $tahun)
+            ->whereMonth('tanggal', $bulanNumber)
+            ->orderBy('updated_at', 'desc');
 
+        if (auth()->user()->status === 'admin') {
             if ($selectedUser) {
                 $query->where('user_id', $selectedUser);
             }
-
-            $jurnals = $query->get();
         } else {
-            $jurnals = Jurnal::whereYear('tanggal', $tahun)
-                ->whereMonth('tanggal', $bulanNumber)
-                ->where('user_id', auth()->id())
-                ->get();
+            $query->where('user_id', auth()->id());
         }
+
+        if ($selectedDate) {
+            $query->whereDate('tanggal', $selectedDate);
+        }
+
+        $jurnals = $query->get();
 
         $namaBulan = Carbon::createFromDate(null, $bulanNumber)->locale('id')->monthName;
 
-        return view('jurnals.detail', compact('jurnals', 'namaBulan', 'tahun', 'bulan', 'users', 'selectedUser'));
+        return view('jurnals.detail', compact('jurnals', 'namaBulan', 'tahun', 'bulan', 'users', 'selectedUser', 'selectedDate', 'bulanNumber'));
     }
+
 
 
 

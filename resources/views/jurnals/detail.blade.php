@@ -4,22 +4,33 @@
 <div class="container mx-auto">
     <h1 class="text-2xl mb-10 font-bold">Detail Jurnal PKL untuk {{ $namaBulan }} {{ $tahun }}</h1>
 
-
     <form method="GET" action="{{ route('jurnals.detail', ['tahun' => $tahun, 'bulan' => $bulan]) }}" class="mb-5">
-        <div class="flex items-center">
-            <select name="user_id" class="border border-gray-300 rounded px-3 py-2 mr-2">
+        <div class="flex items-center space-x-2">
+            <select name="user_id" class="border border-gray-300 rounded px-3 py-2">
                 <option value="">Pilih User</option>
                 @foreach($users as $user)
                     <option value="{{ $user->id }}" {{ $selectedUser == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                 @endforeach
             </select>
+
+            <select name="tanggal" class="border border-gray-300 rounded px-3 py-2">
+                <option value="">Pilih Tanggal</option>
+                @for ($i = 1; $i <= Carbon\Carbon::now()->daysInMonth; $i++)
+                    @php
+                        $date = Carbon\Carbon::createFromDate($tahun, $bulanNumber, $i);
+                    @endphp
+                    <option value="{{ $date->toDateString() }}" {{ $selectedDate == $date->toDateString() ? 'selected' : '' }}>
+                        {{ $date->isoFormat('D MMMM') }}
+                    </option>
+                @endfor
+            </select>
+
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Filter</button>
         </div>
     </form>
 
-
     @if($jurnals->isEmpty())
-        <p>Tidak ada jurnal untuk bulan ini.</p>
+        <p>Kosong</p>
     @else
 
     @if(session('success'))
