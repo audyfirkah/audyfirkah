@@ -3,19 +3,20 @@
 @section('content')
 <div class="container mx-auto">
     <h1 class="text-2xl mb-10 font-bold">Detail Jurnal PKL untuk {{ $namaBulan }} {{ $tahun }}</h1>
+
+    {{-- Filter Untuk Data Tabel --}}
 @if (auth()->user()->isAdmin())
     <form method="GET" action="{{ route('jurnals.detail', ['tahun' => $tahun, 'bulan' => $bulan]) }}" class="mb-5">
         <div class="flex items-center space-x-2">
             
-                <select name="user_id" class="border border-gray-300 rounded px-3 py-2">
-                    <option value="">Pilih User</option>
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}" {{ $selectedUser == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                    @endforeach
-                </select>
-           
+            <select name="user_id" class="border border-gray-300 rounded px-3 py-1">
+                <option value="">Pilih User</option>
+                @foreach($users as $user)
+                    <option value="{{ $user->id }}" {{ $selectedUser == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                @endforeach
+            </select>
 
-            <select name="tanggal" class="border border-gray-300 rounded px-3 py-2">
+            <select name="tanggal" class="border border-gray-300 rounded px-3 py-1">
                 <option value="">Pilih Tanggal</option>
                 @for ($i = 1; $i <= Carbon\Carbon::now()->daysInMonth; $i++)
                     @php
@@ -27,10 +28,12 @@
                 @endfor
             </select>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Filter</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded">Filter</button>
         </div>
     </form>
- @endif
+@endif
+    {{-- End FIlter --}}
+    
     @if($jurnals->isEmpty())
         <p>Kosong</p>
     @else
@@ -47,36 +50,36 @@
     <table class="min-w-full table-fixed">
         <thead>
             <tr class="text-center bg-gray-100">
-                <th class="px-4 py-2 w-1/12">No</th>
-                <th class="px-4 py-2 w-2/12">Tanggal</th>
-                <th class="px-4 py-2 w-2/12">Nama</th>
-                <th class="px-4 py-2 w-2/12">Status Absen</th>
-                <th class="px-4 py-2 w-2/12">Kegiatan</th>
-                <th class="px-4 py-2 w-2/12">Hasil</th>
+                <th class="px-4 py-1 w-1/12">No</th>
+                <th class="px-4 py-1 w-2/12">Tanggal</th>
+                <th class="px-4 py-1 w-2/12">Nama</th>
+                <th class="px-4 py-1 w-2/12">Status Absen</th>
+                <th class="px-4 py-1 w-2/12">Kegiatan</th>
+                <th class="px-4 py-1 w-2/12">Hasil</th>
                 @if (auth()->user()->isAdmin())
-                    <th class="px-4 py-2 w-1/12">Aksi</th>
+                    <th class="px-4 py-1 w-1/12">Aksi</th>
                 @endif
             </tr>
         </thead>
         <tbody>
             @foreach ($jurnals as $jurnal)
             <tr class="border-b">
-                <td class="px-4 py-2 text-center">{{ $loop->iteration }}</td>
-                <td class="px-4 py-2 text-center">{{ $jurnal->tanggal->format('d F Y') }}</td>
-                <td class="px-4 py-2 text-center">
+                <td class="px-4 py-1 text-center">{{ $loop->iteration }}</td>
+                <td class="px-4 py-1 text-center">{{ $jurnal->tanggal->format('d F Y') }}</td>
+                <td class="px-4 py-1 text-center">
                     @if (auth()->user()->isAdmin())
                         {{ $jurnal->user->name ?? 'Nama Pengguna Tidak Tersedia' }}
                     @else
                         {{ auth()->user()->name }}
                     @endif
                 </td>
-                <td class="px-4 py-2 text-center">
+                <td class="px-4 py-1 text-center">
                     <span class="inline-block px-3 py-1 text-sm font-semibold {{ $jurnal->status_absen == 'Hadir' ? 'text-green-800 bg-green-200' : 'text-red-800 bg-red-200' }}">
                         {{ $jurnal->status_absen }}
                     </span>
                 </td>
-                <td class="px-4 py-2 text-center">{{ $jurnal->kegiatan }}</td>
-                <td class="px-4 py-2 text-center">
+                <td class="px-4 py-1 text-center">{{ $jurnal->kegiatan }}</td>
+                <td class="px-4 py-1 text-center">
                     @if ($jurnal->hasil)
                         <div class="flex justify-center">
                             <img src="{{ asset('storage/' . $jurnal->hasil) }}" alt="Hasil Image" class="w-20 h-20 object-cover rounded mb-2">
@@ -86,7 +89,7 @@
                     @endif
                 </td>
                 @if (auth()->user()->isAdmin())
-                    <td class="px-4 py-2 text-center">
+                    <td class="px-4 py-1 text-center">
                         <div class="flex justify-center items-center space-x-2">
                             <a href="{{ route('jurnals.edit', $jurnal->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded">Edit</a>
                             <form action="{{ route('jurnals.destroy', $jurnal->id) }}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus jurnal ini?')">

@@ -8,7 +8,7 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-200 flex items-center justify-center h-screen">
    <div class="flex items-center justify-center">
     <div class="bg-white p-8 rounded shadow-md w-full sm:w-96">
         <h2 class="text-2xl font-bold mb-6 text-center">Pendaftaran</h2>
