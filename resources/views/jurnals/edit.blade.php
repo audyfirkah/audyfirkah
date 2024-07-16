@@ -39,10 +39,10 @@
                 $minDate = now()->subDay()->format('Y-m-d');
                 $maxDate = now()->addDay()->format('Y-m-d');
             @endphp
-            <input type="date" name="tanggal" id="tanggal" value="{{ $jurnal->tanggal->format('Y-m-d') ?? $today}}" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror">
-            @error('tanggal')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
+                <input type="date" name="tanggal" id="tanggal" value="{{ $jurnal->tanggal->format('Y-m-d')}}" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror">
+                @error('tanggal')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
         </div>
         <div class="mb-4">
             <label class="block text-gray-700">Status Absen:</label>
@@ -65,7 +65,7 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="hasil" class="block text-gray-700">Hasil (Gambar):</label>
+            <label for="hasil" class="block text-gray-700">Bukti Hasil (Gambar):</label>
             
             @if($jurnal->hasil)
                 <img src="{{ asset('storage/' . $jurnal->hasil) }}" alt="Hasil Image" class="w-20 h-20 object-cover rounded mb-2">

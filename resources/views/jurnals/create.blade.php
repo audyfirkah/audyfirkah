@@ -35,10 +35,19 @@
                 $minDate = now()->subDay()->format('Y-m-d');
                 $maxDate = now()->addDay()->format('Y-m-d');  
             @endphp
-            <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror bg-gray-100" readonly>
-            @error('tanggal')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
+            @if (auth()->user()->isAdmin())
+                <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror">
+                @error('tanggal')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            @else
+                <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror bg-gray-100" readonly>
+                @error('tanggal')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            @endif
+
+            
         </div>
         <div class="mb-4">
             <label class="block text-gray-700">Status Absen:</label>
@@ -61,7 +70,7 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="hasil" class="block text-gray-700">Hasil (Gambar):</label>
+            <label for="hasil" class="block text-gray-700">Bukti Hasil (Gambar):</label>
             <input type="file" name="hasil" id="hasil" class="border rounded w-full py-2 px-3 @error('hasil') border-red-500 @enderror">
             @error('hasil')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

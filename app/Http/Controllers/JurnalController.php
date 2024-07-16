@@ -51,14 +51,25 @@ class JurnalController extends Controller
     // Menyimpan jurnal baru ke database
     public function store(Request $request)
     {
-        $request->validate([
-            'tanggal' => 'required|date|after_or_equal:' . now()->subDay()->format('Y-m-d') . '|
-                            before_or_equal:' . now()->addDay()->format('Y-m-d'),
+        if (auth()->user()->status === 'admin') {
+            $request->validate([
+                'user_id' => 'required',
+                'tanggal' => 'required|date',
+                'status_absen' => 'required',
+                'kegiatan' => 'required|string',
+                'hasil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+        } else {
+            $request->validate([
+                'user_id' => 'required',
+                'tanggal' => 'required|date|after_or_equal:' . now()->subDay()->format('Y-m-d') . '|
+                                    before_or_equal:' . now()->addDay()->format('Y-m-d'),
 
-            'status_absen' => 'required',
-            'kegiatan' => 'required|string',
-            'hasil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+                'status_absen' => 'required',
+                'kegiatan' => 'required|string',
+                'hasil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+        }
 
         $data = $request->all();
 
@@ -102,15 +113,27 @@ class JurnalController extends Controller
     // Menyimpan perubahan jurnal ke database
     public function update(Request $request, Jurnal $jurnal)
     {
-        $request->validate([
-            'user_id' => 'required',
-            'tanggal' => 'required|date|after_or_equal:' . now()->subDay()->format('Y-m-d') . '|
-                        before_or_equal:' . now()->addDay()->format('Y-m-d'),
+        if (auth()->user()->status === 'admin') {
+            $request->validate([
+                'user_id' => 'required',
+                'tanggal' => 'required|date',
+                'status_absen' => 'required',
+                'kegiatan' => 'required|string',
+                'hasil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+        } else {
+            $request->validate([
+                'user_id' => 'required',
+                'tanggal' => 'required|date|after_or_equal:' . now()->subDay()->format('Y-m-d') . '|
+                                    before_or_equal:' . now()->addDay()->format('Y-m-d'),
 
-            'status_absen' => 'required',
-            'kegiatan' => 'required|string',
-            'hasil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+                'status_absen' => 'required',
+                'kegiatan' => 'required|string',
+                'hasil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+        }
+
+
 
         $data = $request->all();
 
