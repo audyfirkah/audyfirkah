@@ -24,13 +24,8 @@
             @enderror
         </div>
         @else
-        
         {{-- Hidden input untuk user --}}
-        <div class="mb-4">
-            <label for="nama" class="block text-gray-700">Nama:</label>
-            <input type="text" id="nama" name="nama" value="{{ auth()->user()->name }}" readonly class="border rounded w-full py-2 px-3 bg-gray-100">
-        </div>
-        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
         @endif
 
         <div class="mb-4">
@@ -40,7 +35,7 @@
                 $minDate = now()->subDay()->format('Y-m-d');
                 $maxDate = now()->addDay()->format('Y-m-d');  
             @endphp
-            <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror">
+            <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror bg-gray-100" readonly>
             @error('tanggal')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror

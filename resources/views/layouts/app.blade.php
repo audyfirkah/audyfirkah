@@ -10,11 +10,11 @@
 <body class="bg-gray-100">
     <nav class="bg-gradient-to-r from-gray-900 to-gray-700 p-4 text-white flex justify-between items-center shadow-lg">
         <div class="flex space-x-4">
-            <a href="{{ url('/') }}" class="hover:text-yellow-400 ml-10 transition duration-300 ease-in-out transform hover:scale-105">Home</a>
-            <a href="{{ route('jurnals.create') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Tambah Data</a>
-            <a href="{{ url('/ringkasan') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Ringkasan</a>
+            <a href="{{ url('/') }}" class="hover:text-yellow-400 ml-10 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Home</a>
+            <a href="{{ route('jurnals.create') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Tambah Data</a>
+            <a href="{{ url('/ringkasan') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Ringkasan</a>
             @if (auth()->user() && auth()->user()->isAdmin())
-                <a href="{{ url('/users') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Anggota</a>
+                <a href="{{ url('/users') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Anggota</a>
             @endif
         </div>
         <div class="flex items-center space-x-4">
@@ -36,7 +36,7 @@
                 </div>
             </div>
             @else
-            <a href="{{ url('/login') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Login</a>
+            <a href="{{ url('/login') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Login</a>
             @endauth
         </div>
     </nav>

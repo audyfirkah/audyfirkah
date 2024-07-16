@@ -18,7 +18,7 @@
     
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-                <input id="username" type="text" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus
+                <input id="username" type="text" name="username" value="{{ old('username') }}" autocomplete="username" autofocus
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 @error('username')
                     <div class="text-red-500 text-xs mt-1">
@@ -29,7 +29,7 @@
     
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                <input id="name" type="text" name="name" value="{{ old('name') }}" autocomplete="name" autofocus
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 @error('name')
                     <div class="text-red-500 text-xs mt-1">
@@ -40,7 +40,7 @@
     
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email"
+                <input id="email" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 @error('email')
                     <div class="text-red-500 text-xs mt-1">
@@ -51,7 +51,7 @@
     
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input id="password" type="password" name="password" required autocomplete="new-password"
+                <input id="password" type="password" name="password" autocomplete="new-password"
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 @error('password')
                     <div class="text-red-500 text-xs mt-1">
@@ -62,7 +62,7 @@
     
             <div class="mb-4">
                 <label for="password-confirm" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password"
+                <input id="password-confirm" type="password" name="password_confirmation" autocomplete="new-password"
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 @error('password_confirmation')
                     <div class="text-red-500 text-xs mt-1">

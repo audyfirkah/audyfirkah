@@ -66,6 +66,13 @@
         </div>
         <div class="mb-4">
             <label for="hasil" class="block text-gray-700">Hasil (Gambar):</label>
+            
+            @if($jurnal->hasil)
+                <img src="{{ asset('storage/' . $jurnal->hasil) }}" alt="Hasil Image" class="w-20 h-20 object-cover rounded mb-2">
+            @else
+                <span class="text-red-500">Belum ada hasil</span>
+            @endif
+            
             <input type="file" name="hasil" id="hasil" class="border rounded w-full py-2 px-3 @error('hasil') border-red-500 @enderror">
             @error('hasil')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
