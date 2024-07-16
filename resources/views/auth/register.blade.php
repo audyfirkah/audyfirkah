@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
    <div class="flex items-center justify-center">
     <div class="bg-white p-8 rounded shadow-md w-full sm:w-96">
-        <h2 class="text-2xl font-bold mb-6 text-center">Edit User</h2>
+        <h2 class="text-2xl font-bold mb-6 text-center">Pendaftaran</h2>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf

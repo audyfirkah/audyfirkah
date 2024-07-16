@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jurnal PKL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <nav class="bg-gray-900 p-4 text-white flex justify-between items-center">
-        <div>
-            <a href="{{ url('/') }}" class="ml-20 hover:text-yellow-600 hover:shadow-lg transition duration-300 ease-in-out hover:scale-105">Home</a>
-            <a href="{{ route('jurnals.create') }}" class="ml-10 hover:text-yellow-600 hover:shadow-lg transition duration-300 ease-in-out hover:scale-105">Tambah data</a>
-            <a href="{{ url('/ringkasan') }}" class="ml-10 hover:text-yellow-600 hover:shadow-lg transition duration-300 ease-in-out hover:scale-105">Ringkasan</a>
+    <nav class="bg-gradient-to-r from-gray-900 to-gray-700 p-4 text-white flex justify-between items-center shadow-lg">
+        <div class="flex space-x-4">
+            <a href="{{ url('/') }}" class="hover:text-yellow-400 ml-10 transition duration-300 ease-in-out transform hover:scale-105">Home</a>
+            <a href="{{ route('jurnals.create') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Tambah Data</a>
+            <a href="{{ url('/ringkasan') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Ringkasan</a>
             @if (auth()->user() && auth()->user()->isAdmin())
-                <a href="{{ url('/users') }}" class="ml-10 hover:text-yellow-600 hover:shadow-lg transition duration-300 ease-in-out hover:scale-105">Anggota</a>
+                <a href="{{ url('/users') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Anggota</a>
             @endif
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center space-x-4">
             @auth
             <div class="relative">
-                <button class="flex items-center text-sm font-medium text-white focus:outline-none">
-                    <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('path_to_your_profile_photo') }}" alt="Profile Photo">
-                    <span class="ml-2">{{ auth()->user()->name }}</span>
+                <button class="flex items-center text-sm font-medium text-white focus:outline-none mr-10">
+                    <span class="ml-2">Welcome, {{ auth()->user()->name }}</span>
                 </button>
                 <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">
                     <a href="{{ route('logout') }}"
@@ -36,11 +36,11 @@
                 </div>
             </div>
             @else
-            <a href="{{ url('/login') }}" class="ml-10 hover:text-yellow-600 hover:shadow-lg transition duration-300 ease-in-out hover:scale-105">Login</a>
+            <a href="{{ url('/login') }}" class="hover:text-yellow-400 transition duration-300 ease-in-out transform hover:scale-105">Login</a>
             @endauth
         </div>
     </nav>
-    <div class="container mx-auto mt-4">
+    <div class="container mx-auto mt-4 px-4">
         @yield('content')
     </div>
     
