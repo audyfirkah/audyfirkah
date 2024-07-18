@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> --}}
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 <body class="bg-gray-200 flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded shadow-md w-full sm:w-96">
+        <div class="items-center">
+            <img src="{{ asset('storage/images/navbar.png') }}" alt="Logo" class="h-auto w-auto">
+        </div>
+
         <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
         @if(session('success'))
             <div class="bg-green-100 border mb-5 border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
@@ -24,7 +28,7 @@
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
                 <input id="username" type="text" name="username" value="{{ old('username') }}" autocomplete="username" autofocus
-                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('username') invalid:border-red-500 @enderror">
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm @error('username') invalid:border-red-500 @enderror">
                 @error('username')
                     <div class="text-red-500 mt-1 text-sm">{{ $message }}</div>
                 @enderror
@@ -33,20 +37,20 @@
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                 <input id="password" type="password" name="password" autocomplete="current-password"
-                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('password') invalid:border-red-500 @enderror">
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm @error('password') invalid:border-red-500 @enderror">
                 @error('password')
                     <div class="text-red-500 mt-1 text-sm">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="flex justify-center">                
-                <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <button type="submit" class="bg-orange-400 text-white py-2 px-4 rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
                     Login
                 </button>
             </div>
         </form>
         <div class="mt-4 text-center">
-            <a href="{{ url('/register') }}" class="text-blue-500 hover:text-blue-700">Daftar</a>
+            <a href="{{ url('/register') }}" class="text-orange-500 hover:text-orange-700">Daftar</a>
         </div>
     </div>
 </body>

@@ -53,11 +53,11 @@
             <label class="block text-gray-700">Status Absen:</label>
             <div>
                 <label class="inline-flex items-center">
-                    <input type="radio" name="status_absen" value="Hadir" class="form-radio text-blue-500" checked>
+                    <input type="radio" name="status_absen" value="Hadir" class="form-radio text-orange-500" checked>
                     <span class="ml-2">Hadir</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" name="status_absen" value="Tidak Hadir" class="form-radio text-blue-500">
+                    <input type="radio" name="status_absen" value="Tidak Hadir" class="form-radio text-orange-500">
                     <span class="ml-2">Tidak Hadir</span>
                 </label>
             </div>
@@ -77,7 +77,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Simpan</button>
+        <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded">Simpan</button>
     </form>
 </div>
 @endsection

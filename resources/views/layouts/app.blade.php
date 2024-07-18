@@ -11,20 +11,20 @@
     <nav class="bg-gradient-to-r from-gray-900 to-gray-700 p-4 text-white flex justify-between items-center shadow-lg">
         
         <div class="flex space-x-4 items-center">
-            <img src="{{ asset('storage/images/navbar.png') }}" alt="Logo" class="h-10 w-auto mr-10">
+            <img src="{{ asset('storage/images/navbar.png') }}" alt="Logo" class="h-12 w-auto mr-10">
 
-            <a href="{{ url('/') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Home</a>
-            <a href="{{ route('jurnals.create') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Tambah Data</a>
-            <a href="{{ url('/ringkasan') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Ringkasan</a>
+            <a href="{{ url('/') }}" class="hover:text-orange-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-orange-400 hover:rotate-2">Home</a>
+            <a href="{{ route('jurnals.create') }}" class="hover:text-orange-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-orange-400 hover:-rotate-2">Tambah Data</a>
+            <a href="{{ url('/ringkasan') }}" class="hover:text-orange-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-orange-400 hover:rotate-2">Ringkasan</a>
             @if (auth()->user() && auth()->user()->isAdmin())
-                <a href="{{ url('/users') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Anggota</a>
+                <a href="{{ url('/users') }}" class="hover:text-orange-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-orange-400 hover:-rotate-2">Anggota</a>
             @endif
         </div>
         <div class="flex items-center space-x-4">
             @auth
             <div class="relative">
                 <button class="flex items-center text-sm font-medium text-white focus:outline-none mr-10">
-                    <span class="ml-2">Welcome, {{ auth()->user()->name }}</span>
+                    <span class="ml-2 hover:text-orange-400 transition duration-75 ease-in-out transform hover:scale-105 hover:mb-1 hover:-rotate-1">Welcome, {{ auth()->user()->name }}</span>
                 </button>
                 <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">
                     <a href="{{ route('logout') }}"
@@ -39,7 +39,7 @@
                 </div>
             </div>
             @else
-            <a href="{{ url('/login') }}" class="hover:text-yellow-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-yellow-500">Login</a>
+            <a href="{{ url('/login') }}" class="hover:text-orange-400 transition duration-75 ease-in-out transform hover:scale-105 hover:border-b-2 hover:border-orange-400 hover:rotate-2">Login</a>
             @endauth
         </div>
     </nav>
