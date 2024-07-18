@@ -41,7 +41,7 @@
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             @else
-                <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror bg-gray-100" readonly>
+                <input type="date" name="tanggal" value="{{  $today }}" id="tanggal" class="border rounded w-full py-2 px-3 @error('tanggal') border-red-500 @enderror bg-gray-200" readonly>
                 @error('tanggal')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror

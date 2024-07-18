@@ -220,11 +220,13 @@ class JurnalController extends Controller
             ];
         }
 
-        $tahun =  date('Y', strtotime($jurnal->tanggal));
-        $bulan =  date('m', strtotime($jurnal->tanggal));
+        // Menetapkan nilai default untuk tahun dan bulan jika $jurnal kosong
+        $tahun = $jurnals->isNotEmpty() ? $jurnals->first()->tanggal->format('Y') : date('Y');
+        $bulan = $jurnals->isNotEmpty() ? $jurnals->first()->tanggal->format('m') : date('m');
 
         return view('jurnals.ringkasan', compact('ringkasan', 'tahun', 'bulan'));
     }
+
 
 
 
